@@ -1,0 +1,1 @@
+# AdvertApp-RepositoryPattern
