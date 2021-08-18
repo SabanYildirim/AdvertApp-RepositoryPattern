@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  adverts.gateway.api:
+    image: ${DOCKER_REGISTRY-}advertsgatewayapi
+    build:
+      context: .
+      dockerfile: Adverts.Gateway.Api/Dockerfile
+
+  rabbitmq.consumer:
+    image: ${DOCKER_REGISTRY-}rabbitmqconsumer
+    build:
+      context: .
+      dockerfile: RabbitMQ.Consumer/Dockerfile
+  
+  advertsdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    volumes:
+      - mssql-server-linux-data:/var/opt/mssql/data
+  rabbitmq:
+    image: rabbitmq:3.9-management
+volumes:
+  mssql-server-linux-data:

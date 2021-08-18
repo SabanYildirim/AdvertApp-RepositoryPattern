@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Adverts.Application.Model\Adverts.Application.Model.csproj" />
+    <ProjectReference Include="..\Adverts.Core.Mapping\Adverts.Core.Mapping.csproj" />
+    <ProjectReference Include="..\Adverts.Core\Adverts.Core.csproj" />
+    <ProjectReference Include="..\Adverts.Infrastructure\Adverts.Infrastructure.csproj" />
+    <ProjectReference Include="..\RabbitMQ.Producer\RabbitMQ.Producer.csproj" />
+  </ItemGroup>
+
+</Project>

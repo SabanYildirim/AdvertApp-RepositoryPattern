@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  adverts.gateway.api:
+    image: ${DOCKER_REGISTRY-}advertsgatewayapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+     - "8004:80"
+    depends_on:
+     - rabbitmq
+     - rabbitmq.consumer
+     - advertsdb
+     
+  advertsdb:
+   container_name: advertsdb
+   environment:
+    ACCEPT_EULA: "Y"
+    SA_PASSWORD: "qaz!0qaz"
+    MSSQL_PID: Express
+   ports:
+     - "1433:1433"
+ 
+  rabbitmq:
+   container_name: rabbitmq
+   environment:
+     - RABBITMQ_VHOST=amqp://guest:guest@host.docker.internal:5672
+     - RABBITMQ_USERNAME=guest
+     - RABBITMQ_PASSWORD=guest
+     - RABBITMQ_NODE_TYPE=stats
+   ports:
+    - 5672:5672
+    - 15672:15672
