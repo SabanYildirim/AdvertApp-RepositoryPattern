@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-RabbitMQ.Consumer-5BB48F41-68EE-4D79-8017-9A5799D5CBDB</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Adverts.Application.Model\Adverts.Application.Model.csproj" />
+    <ProjectReference Include="..\Adverts.Application\Adverts.Application.csproj" />
+    <ProjectReference Include="..\RabbitMQ.Base\RabbitMQ.Base.csproj" />
+  </ItemGroup>
+</Project>

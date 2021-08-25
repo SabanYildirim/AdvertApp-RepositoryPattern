@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  advertsdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment: 
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "qaz!0qaz"
+      MSSQL_PID: Express
+    ports: 
+      - "1433:1433"
+
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    container_name: rabbitmq
+    ports:
+     - 5672:5672
+     - 15672:15672
+    environment:
+     - RABBITMQ_USERNAME=guest
+     - RABBITMQ_PASSWORD=guest
+
+  adverts.gateway.api:
+    image: ${DOCKER_REGISTRY-}advertsgatewayapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    build:
+      context: .
+      dockerfile: Adverts.Gateway.Api/Dockerfile
+    depends_on:
+     - rabbitmq
+     - advertsdb
+    entrypoint: ["/wait-for-it.sh", "advertsdb:1433", "-t", "120", "--", "dotnet", "Adverts.Gateway.Api.dll"]
+    ports:
+      - 8080:80
+  
