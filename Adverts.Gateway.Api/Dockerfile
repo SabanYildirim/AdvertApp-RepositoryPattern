@@ -28,8 +28,3 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Adverts.Gateway.Api.dll"]
-
-COPY ./wait-for-it.sh /wait-for-it.sh
-RUN chmod +x wait-for-it.sh
-
-

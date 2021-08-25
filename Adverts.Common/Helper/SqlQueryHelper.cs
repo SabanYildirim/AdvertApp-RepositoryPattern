@@ -26,7 +26,7 @@ namespace Adverts.Common.Helper
             }
 
             if (!string.IsNullOrEmpty(filteringModel.fuel))
-            {
+        {
                 conditions.Add($"fuel=@fuel");
                 dynamicParameters.Add("fuel", filteringModel.fuel);
 

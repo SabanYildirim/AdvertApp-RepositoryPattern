@@ -54,7 +54,7 @@ namespace Adverts.Infrastructure.Repository
 
             sqlQuery.Append(SqlQueryHelper.SortingConditions(sortingModel));
             sqlQuery.Append("OFFSET @Offset ROWS FETCH NEXT @Next ROWS ONLY");
-           
+
             using (var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();

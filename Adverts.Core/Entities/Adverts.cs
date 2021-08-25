@@ -9,9 +9,9 @@ namespace Adverts.Core.Entities
         public string id { get; set; }
         public string memberId { get; set; }
         public string cityId { get; set; }
-        public string cityName { get; set; }
+        public string CityName { get; set; }
         public string townId { get; set; }
-        public string townName { get; set; }
+        public string TownName { get; set; }
         public string modelId { get; set; }
         public string modelName { get; set; }
         public string year { get; set; }
